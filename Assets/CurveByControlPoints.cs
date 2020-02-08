@@ -48,7 +48,7 @@ public class CurveByMouse : MonoBehaviour
             Vector3 endPos = Input.mousePosition;
 
             controlPoints[0] = startPos;
-            controlPoints[1] = new Vector3(startPos.x, endPos.y);
+            controlPoints[1] = new Vector3(startPos.x, (endPos.y - startPos.y) / 2 + startPos.y);
             controlPoints[2] = new Vector3((endPos.x - startPos.x) / 2 + startPos.x, endPos.y);
             controlPoints[3] = endPos;
             for (int i = 0; i < numCircles; i += 1)
@@ -62,8 +62,8 @@ public class CurveByMouse : MonoBehaviour
                 drawnLineObjects[i].SetActive(true);
                 drawnLineObjects[i].transform.position = circlePosition;
             }
-            arrow.transform.right = endPos - drawnLineObjects[20].transform.position;
             arrow.transform.position = endPos;
+            arrow.transform.right = endPos - drawnLineObjects[(3 * numCircles) / 4].transform.position;
             arrow.SetActive(true);
         }
         if (Input.GetMouseButtonUp(0))
