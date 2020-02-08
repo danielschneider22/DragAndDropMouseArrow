@@ -13,6 +13,8 @@ public class CurveByMouse : MonoBehaviour
     private Vector3 startPos;
 
     private GameObject[] drawnLineObjects;
+    private GameObject arrow;
+    public GameObject arrowPrefab;
     public int numCircles;
 
     public void Start()
@@ -23,10 +25,14 @@ public class CurveByMouse : MonoBehaviour
         {
             drawnLineObjects[i] = Instantiate(circle);
             drawnLineObjects[i].transform.SetParent(canvas.transform);
-            float t = (1 / (float)numCircles) * i;
+            float t = (1 / (float) numCircles) * i;
             float onCurve = Mathf.Sqrt(t);
             drawnLineObjects[i].transform.localScale = new Vector3(onCurve, onCurve);
+            drawnLineObjects[i].SetActive(false);
         }
+        arrow = Instantiate(arrowPrefab);
+        arrow.SetActive(false);
+        arrow.transform.SetParent(canvas.transform);
 
         controlPoints = new Vector3[4];
     }
@@ -35,22 +41,16 @@ public class CurveByMouse : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // Vector2 pos;
-            // RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out pos);
             startPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
         }
         if (Input.GetMouseButton(0))
         {
-            // Vector2 pos;
-            // RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, Input.mousePosition, canvas.worldCamera, out pos);
-            Vector3 endPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y);
+            Vector3 endPos = Input.mousePosition;
 
             controlPoints[0] = startPos;
             controlPoints[1] = new Vector3(startPos.x, endPos.y);
             controlPoints[2] = new Vector3((endPos.x - startPos.x) / 2 + startPos.x, endPos.y);
             controlPoints[3] = endPos;
-            Debug.Log("start " + startPos);
-            Debug.Log("end " + endPos);
             for (int i = 0; i < numCircles; i += 1)
             {
                 float t = (1 / (float)numCircles) * i;
@@ -61,8 +61,10 @@ public class CurveByMouse : MonoBehaviour
 
                 drawnLineObjects[i].SetActive(true);
                 drawnLineObjects[i].transform.position = circlePosition;
-                Debug.Log("circle Pos" + circlePosition);
             }
+            arrow.transform.right = endPos - drawnLineObjects[20].transform.position;
+            arrow.transform.position = endPos;
+            arrow.SetActive(true);
         }
         if (Input.GetMouseButtonUp(0))
         {
@@ -70,6 +72,7 @@ public class CurveByMouse : MonoBehaviour
             {
                 obj.SetActive(false);
             }
+            arrow.SetActive(false);
         }
     }
 }

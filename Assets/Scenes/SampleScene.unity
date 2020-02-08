@@ -394,7 +394,9 @@ MonoBehaviour:
   controlPoints: []
   circle: {fileID: 6322906518764560395, guid: 1c471519d57383949a4a6876ba6bad8a, type: 3}
   canvas: {fileID: 571143361}
-  numCircles: 20
+  arrowPrefab: {fileID: 5167438042653226438, guid: 99c932d5067aeee42bea92c273795087,
+    type: 3}
+  numCircles: 30
 --- !u!4 &1185834066
 Transform:
   m_ObjectHideFlags: 0
