@@ -388,7 +388,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1185834064}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39004861877f76b438b3ebf5744e5ca7, type: 3}
+  m_Script: {fileID: 11500000, guid: 96eac6e580c3b8d4585a1a0beecb401f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlPoints: []
@@ -396,7 +396,7 @@ MonoBehaviour:
   canvas: {fileID: 571143361}
   arrowPrefab: {fileID: 5167438042653226438, guid: 99c932d5067aeee42bea92c273795087,
     type: 3}
-  numCircles: 20
+  numCircles: 30
 --- !u!4 &1185834066
 Transform:
   m_ObjectHideFlags: 0
@@ -485,7 +485,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1568854991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96eac6e580c3b8d4585a1a0beecb401f, type: 3}
+  m_Script: {fileID: 11500000, guid: 39004861877f76b438b3ebf5744e5ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   controlPoints:
